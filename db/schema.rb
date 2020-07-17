@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_07_17_020627) do
     t.string "storage_size"
     t.string "color"
     t.integer "user_id"
+    t.integer "app_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

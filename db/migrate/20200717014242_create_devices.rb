@@ -5,6 +5,7 @@ class CreateDevices < ActiveRecord::Migration[6.0]
       t.string :storage_size
       t.string :color
       t.integer :user_id
+      t.integer :app_id
 
       t.timestamps
     end
