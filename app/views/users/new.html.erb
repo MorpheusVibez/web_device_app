@@ -1,0 +1,18 @@
+<h1>Signup</h1>
+
+    <%= form_for(@user) do |user| %>
+        <%= user.label "Username" %>
+        <%= user.text_field :username %>
+        <br>
+        <br>
+        <%= user.label "Password" %>
+        <%= user.text_field :password_digest %>
+        <br>
+        <br>
+        <%= user.label "Name" %>
+        <%= user.text_field :name %>
+        <br>
+        <br>
+        <%= user.label "Location" %>
+        <%= user.text_field :location %>
+    <% end %>
