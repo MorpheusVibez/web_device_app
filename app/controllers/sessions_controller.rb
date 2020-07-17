@@ -4,15 +4,15 @@ class SessionsController < ApplicationController
     end
 
     def create
-        user = User.find_by(username: params[:user][:username])
+        @user = User.find_or_create_by(username: params[:user][:username])
           
-        user = user.try(:authenticate, params[:user][:password])
+        user_authenticate = @user.try(:authenticate, params[:user][:password])
     
         return redirect_to(controller: 'sessions', action: 'new') unless user
         
-        session[:user_id] = user.id
+        session[:user_id] = user_authenticate.id
     
-        @user = user
+        @user = user_authenticate
     
         redirect_to controller: 'homepage', action: 'home'
         #take them to their home page 
