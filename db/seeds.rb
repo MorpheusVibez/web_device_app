@@ -13,3 +13,11 @@ user3 = User.create(username: "User3", password_digest: "wxyz", name: "Third Use
 device1 = Device.create(name: "Macbook Pro", storage_size: "500GB", color: "Space Grey")
 device2 = Device.create(name: "iPhone X", storage_size: "64GB", color: "Space Grey")
 device3 = Device.create(name: "iPad Pro", storage_size: "64GB", color: "Silver")
+device4 = Device.create(name: "Playstation 4", storage_size: "1TB", color: "Black")
+
+app1 = App.create(name: "Twitter", description: "Connect in realtime with the world.", category: "Social Media", storage_size: "100MB")
+app2 = App.create(name: "Ring", description: "Feel safe with home security.", category: "Home Security", storage_size: "150MB")
+app3 = App.create(name: "Gmail", description: "Send emails through Google.", category: "Productivity", storage_size: "50MB")
+app4 = App.create(name: "Zoom", description: "Video chat with your friends", category: "Productivity", storage_size: "75MB")
+app5 = App.create(name: "Shine", description: "Meditation & Motivation", category: "Health", storage_size: "25MB")
+app5 = App.create(name: "Call of Duty", description: "Call of Duty Modern Warfare", category: "Games", storage_size: "100GB")

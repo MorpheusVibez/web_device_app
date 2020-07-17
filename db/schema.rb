@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_17_014242) do
+ActiveRecord::Schema.define(version: 2020_07_17_020627) do
+
+  create_table "apps", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "category"
+    t.string "storage_size"
+    t.integer "user_id"
+    t.integer "device_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "devices", force: :cascade do |t|
     t.string "name"
