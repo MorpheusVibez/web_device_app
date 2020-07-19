@@ -11,5 +11,5 @@ class App < ApplicationRecord
 
     def self.social_media
         where(:category => 'Social Media')
-      end
+    end
 end
