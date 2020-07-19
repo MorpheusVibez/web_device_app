@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         # raise params.inspect
         @user = User.create(user_params)
         # session[:user_id] = @user.id
-        render :show
+        redirect_to @user
 
     end
 
