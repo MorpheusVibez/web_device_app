@@ -16,14 +16,15 @@ ActiveRecord::Schema.define(version: 2020_07_17_020627) do
     t.string "name"
     t.string "description"
     t.string "category"
-    t.string "storage_size"
+    t.string "storage_size_in_MB"
+    t.integer "device_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "devices", force: :cascade do |t|
     t.string "name"
-    t.string "storage_size"
+    t.integer "storage_size_in_GB"
     t.string "color"
     t.integer "user_id"
     t.integer "app_id"

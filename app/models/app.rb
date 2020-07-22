@@ -5,11 +5,10 @@ class App < ApplicationRecord
     validates :name, presence: :true
     validates :description, presence: :true
     validates :category, presence: :true
-    
-    # scope :social_media, -> { where(category: "Social Media") }
-    validates :storage_size, presence: :true
+    validates :storage_size_in_MB, presence: :true
 
-    def social_media
+    def self.social_media
+        # Correct scope method
         where(:category => 'Social Media')
     end
 

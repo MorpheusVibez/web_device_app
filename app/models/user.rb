@@ -4,9 +4,6 @@ class User < ApplicationRecord
     validates :username, uniqueness: :true
     
     has_many :devices
-    has_many :apps, through: :devices
+    has_many :apps, {through: :devices, :source=>"app"}
 
-    def devices
-        
-    end
 end
