@@ -5,4 +5,8 @@ class User < ApplicationRecord
     
     has_many :devices
     has_many :apps, through: :devices
+
+    def devices
+        
+    end
 end

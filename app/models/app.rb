@@ -1,6 +1,6 @@
 class App < ApplicationRecord
-    belongs_to :devices, optional: :true
-    belongs_to :users, optional: :true
+    has_many :devices
+    has_many :users, through: :devices
 
     validates :name, presence: :true
     validates :description, presence: :true
@@ -9,7 +9,8 @@ class App < ApplicationRecord
     # scope :social_media, -> { where(category: "Social Media") }
     validates :storage_size, presence: :true
 
-    def self.social_media
+    def social_media
         where(:category => 'Social Media')
     end
+
 end

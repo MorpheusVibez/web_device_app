@@ -55,3 +55,4 @@ end
 gem 'pry'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'thin'
