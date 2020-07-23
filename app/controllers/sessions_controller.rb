@@ -5,22 +5,33 @@ class SessionsController < ApplicationController
     def create
       
         user = User.find_by(username: params[:username])
-          
-        user_authenticate = @user.try(:authenticate, params[:password])
-    
-        return redirect_to(controller: 'sessions', action: 'new') unless @user
+        raise params.inspect
+        user_authenticate = user.try(:authenticate, params[:password_digest])
+
+        if user_authenticate
+          session[:user_id] = user_authenticate.id
+          redirect_to user_url(user)
+        else
+          render :new
+        end
         
-        session[:user_id] = user_authenticate.id
-    
-        @user = user_authenticate
-    
-        redirect_to controller: 'application', action: 'home'
-        #take them to their home page 
-      end
+       
+    end
     
       def destroy
         session.delete :user_id
         
         redirect_to '/'
       end
+
+      private
+
+      # def find_user
+      #   User.find_by(session_params.stringify_keys)
+      #   # params.require(:user).permit(:username, :password, :password_confirmation)
+      # end
+
+      # def session_params
+      #   params.permit(:username)#, :password, :password_confirmation)
+      # end
 end
