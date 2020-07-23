@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user1 = User.create(username: "User1", password_digest: "1234", name: "First User", location: "Springfield, MA")
-user2 = User.create(username: "User2", password_digest: "abcd", name: "Second User", location: "Atlanta, GA")
-user3 = User.create(username: "User3", password_digest: "wxyz", name: "Third User", location: "Los Angeles, CA")
+user1 = User.create(username: "User1", password: "1234", name: "First User", location: "Springfield, MA")
+user2 = User.create(username: "User2", password: "abcd", name: "Second User", location: "Atlanta, GA")
+user3 = User.create(username: "User3", password: "wxyz", name: "Third User", location: "Los Angeles, CA")
 
 device1 = Device.create(name: "Macbook Pro", storage_size_in_GB: 500, color: "Space Grey")
 device2 = Device.create(name: "iPhone X", storage_size_in_GB: 64, color: "Space Grey")
