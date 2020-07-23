@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     
         @user = user_authenticate
     
-        redirect_to controller: 'homepage', action: 'home'
+        redirect_to controller: 'application', action: 'home'
         #take them to their home page 
       end
     

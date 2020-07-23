@@ -16,6 +16,11 @@ class UsersController < ApplicationController
         
     end
 
+    def signin
+        @users = User.all
+        @user = User.new
+    end
+
     private
 
     def user_params
