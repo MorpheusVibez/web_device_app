@@ -7,5 +7,7 @@ class Device < ApplicationRecord
     validates :name, presence: :true
     validates :storage_size_in_GB, presence: :true
     validates :color, presence: :true
+
+    
     
 end
