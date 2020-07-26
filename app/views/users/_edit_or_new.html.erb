@@ -11,6 +11,19 @@
       <%= f.text_field :username %>
       <br>
       <br>
+      <%= f.label "Device" %>
+      <%= f.fields_for :devices, @device do |d| %>
+            <%= d.label "Name" %>
+            <%= d.text_field :name %>
+            <br><br>
+            <%= d.label "Storage Space" %>
+            <%= d.number_field :storage_size_in_GB %>GB
+            <br><br>
+            <%= d.label "Color" %>
+            <%= d.text_field :color %>
+            <% end %>
+      <br>
+      <br>
       <%= f.label :password %>
       <%= f.password_field :password %>
       <br>
