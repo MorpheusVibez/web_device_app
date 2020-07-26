@@ -1,15 +1,16 @@
-<h1> Edit Devices Form </h1>
-
 <%= form_for(@device) do |f| %>
 
       <%= f.label :name %>
       <%= f.text_field :name %>
-
-      <%= f.label :storage_size_in_GB %>
-      <%= f.text_field :storage_size_in_GB %>
-
+      <br>
+      <br>
+      <%= f.label "Storage Space "%>
+      <%= f.number_field :storage_size_in_GB %> GB
+      <br>
+      <br>
       <%= f.label :color %>
-      <%= f.password_field :color %>
-
+      <%= f.text_field :color %>
+      <br>
+      <br>
       <%= f.submit "Confirm" %>
 <% end %>

@@ -6,8 +6,9 @@ class DevicesController < ApplicationController
 
     def create
         @device = Device.new(device_params)
+        # raise params.inspect
         if @device.save
-            render :show
+            redirect_to device_path(@device)
         else
             render :new
         end
@@ -43,7 +44,7 @@ class DevicesController < ApplicationController
     private
 
         def device_params
-            params.require(:device).permit(:name, :storage_size, :color)
+            params.require(:device).permit(:name, :storage_size_in_GB, :color)
         end
 
         def all_devices
