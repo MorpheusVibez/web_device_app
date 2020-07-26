@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     
     def new
        new_user
+       @devices = Device.all
     end
 
     def create

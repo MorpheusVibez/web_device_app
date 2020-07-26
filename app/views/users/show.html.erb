@@ -3,6 +3,7 @@
 <h2> My Info: </h2>
     <ul> <%= current_user.name %> </ul>
     <ul> <%= current_user.location %> </ul>
+    <%# <ul> <%= link_to current_user.devices, device_path(@device) %> </ul> %>
 
     
 <%= link_to 'Edit', edit_user_path(current_user) %>

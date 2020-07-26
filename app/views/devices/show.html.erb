@@ -1,10 +1,13 @@
 <h1>Devices</h1>
 
-<h1>Welcome <%= current_user.username %></h1>
+<h1> <%= @device.name %></h1>
 
-<h2> My Device: </h2>
-    <ul> <%= current_user.name %> </ul>
-    <ul> <%= current_user.location %> </ul>
+<h2> Info: </h2>
+    
+    <ul> Name: <%= @device.name %> </ul>
+    <ul> <%= @device.storage_size_in_GB %> </ul>
+    <ul> <%= @device.color %> </ul>
+    <%# <ul> <%= link_to @user, user_path(@user) %> </ul> %>
 
     
 <%= link_to 'Edit', edit_device_path(@device) %>

@@ -19,6 +19,7 @@ class DevicesController < ApplicationController
 
     def show
         find_device
+        # @user = Device.find(params[:id])
     end
 
     def edit
