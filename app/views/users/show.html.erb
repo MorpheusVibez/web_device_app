@@ -3,8 +3,9 @@
 <h2> My Info: </h2>
     <ul> <%= current_user.name %> </ul>
     <ul> <%= current_user.location %> </ul>
-    <%# <ul> <%= link_to current_user.devices, device_path(current_user) %> </ul> %>
-    <ul> <%= current_user.devices.count%>
+    <ul> <% current_user.devices.each do |device| %>
+        <%= link_to device.name, device_path(device) %>
+        <% end %></ul>
     <br>
 
 

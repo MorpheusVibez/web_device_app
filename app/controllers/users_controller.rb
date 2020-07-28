@@ -5,8 +5,8 @@ class UsersController < ApplicationController
     end
     
     def new
-       new_user
-       @user.devices.build(user_params)
+       @user = User.new
+       @user.devices.build
     end
 
     def create
