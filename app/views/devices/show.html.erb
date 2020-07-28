@@ -6,10 +6,17 @@
     
     <ul> <h3> Name: <%= @device.name %> </h3> </ul>
     <ul> <h3> Storage Size: <%= @device.storage_size_in_GB %>GB </h3> </ul>
-    <ul> <h3> Color: <%= @device.color %> </h3> </ul>
-    <ul> <%= link_to 'User Profile', user_path(@device.user_id) %> </ul>
+    <ul> <h3> Color: <%= @device.color %> </h3> </ul>        
+    <ul> <% if @device.user_id == !nil%>
+        <%= link_to 'User Profile', user_path(@device.user_id) %> 
+        <% else %>
+        <h3> No User </h3>
+        <% end %> 
+    </ul>
 
-    
+<%= link_to 'All Devices', devices_path %>
+<br>
+<br>    
 <%= link_to 'Edit', edit_device_path(@device) %>
 <br>
 <br>

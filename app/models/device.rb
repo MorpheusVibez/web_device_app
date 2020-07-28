@@ -8,6 +8,6 @@ class Device < ApplicationRecord
     validates :storage_size_in_GB, presence: :true
     validates :color, presence: :true
 
-    
+    # accepts_nested_attributes_for :apps
     
 end

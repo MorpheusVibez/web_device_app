@@ -31,7 +31,7 @@ class DevicesController < ApplicationController
         find_device
         if @device.update_attributes(device_params)
           # Handle a successful update.
-          redirect_to(@show)
+          redirect_to(@device)
         else
           render :edit
         end
