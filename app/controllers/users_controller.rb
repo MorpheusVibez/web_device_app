@@ -5,8 +5,8 @@ class UsersController < ApplicationController
     end
     
     def new
-       @user = User.new
-       @user.devices.build
+       new_user
+       build_devices
     end
 
     def create
@@ -17,28 +17,29 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id])
+        find_user
     end
 
     def edit
-        @user = User.find(params[:id])
-        @device = @user.devices
-        raise params.inspect
+        find_user
+        @user.devices.build
+        # raise params.inspect
     end
 
     def update
-        @user = User.find(params[:id])
+        find_user
         if @user.update_attributes(user_params)
+            @user.devices.build
           # Handle a successful update.
-          render :show
+          redirect_to user_path(@user)
         else
           render :edit
         end
     end
 
     def login
-        @users = User.all
-        @user = User.new
+        all_users
+        new_user
     end
 
     private
@@ -54,4 +55,13 @@ class UsersController < ApplicationController
     def new_user
         @user = User.new
     end
+
+    def build_devices
+        @user.devices.build
+    end
+
+    def find_user
+        @user = User.find(params[:id])
+    end
+
 end

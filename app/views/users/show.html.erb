@@ -3,13 +3,16 @@
 <h2> My Info: </h2>
     <ul> <%= current_user.name %> </ul>
     <ul> <%= current_user.location %> </ul>
-    <ul> <% current_user.devices.each do |device| %>
-        <%= link_to device.name, device_path(device) %>
+    <ul> <%  current_user.devices.each do |device| %>
+
+        <%= link_to device.name, user_device_path(device.id) %>
         <% end %></ul>
     <br>
 
 
-    
+<%= link_to 'All Devices', user_devices_path(current_user.id) %>
+<br>
+<br>
 <%= link_to 'Edit', edit_user_path(current_user) %>
 <br>
 <br>

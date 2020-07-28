@@ -56,6 +56,6 @@ class DevicesController < ApplicationController
         end
 
         def find_device
-            @device = Device.find(params[:id])
+            @device = Device.find(params[:user_id])
         end
 end
