@@ -1,5 +1,5 @@
 class DevicesController < ApplicationController
-
+before_action :require_logged_in, only: [:new, :create, :edit, :update]
     def new
         new_device
     end
@@ -20,7 +20,6 @@ class DevicesController < ApplicationController
 
     def show
         find_device
-        # @user = Device.find(params[:id])
     end
 
     def edit
@@ -30,6 +29,12 @@ class DevicesController < ApplicationController
     def update
         find_device
         if @device.update_attributes(device_params)
+            if @device.user_id == nil
+                @device.user_id = current_user.id
+                @device.save
+                redirect_to(@device)
+            # else render :edit
+            end
           # Handle a successful update.
           redirect_to(@device)
         else
@@ -56,6 +61,6 @@ class DevicesController < ApplicationController
         end
 
         def find_device
-            @device = Device.find(params[:user_id])
+            @device = Device.find(params[:id])
         end
 end

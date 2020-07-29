@@ -19,19 +19,7 @@ class SessionsController < ApplicationController
     end
     
       def destroy
-        session.clear
-        
-        redirect_to '/'
+        logout
       end
 
-      private
-
-      # def find_user
-      #   User.find_by(session_params.stringify_keys)
-      #   # params.require(:user).permit(:username, :password, :password_confirmation)
-      # end
-
-      # def session_params
-      #   params.permit(:username)#, :password, :password_confirmation)
-      # end
 end

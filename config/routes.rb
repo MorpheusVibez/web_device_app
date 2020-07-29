@@ -11,11 +11,13 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :devices
-    resources :appse
+    resources :apps
   end
 
   resources :devices
 
   resources :apps
+
+  resources :sessions, only: [ :new, :create, :destroy]
 
 end

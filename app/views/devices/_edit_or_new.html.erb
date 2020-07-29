@@ -1,4 +1,4 @@
-<%= form_for(@device) do |f| %>
+<%= form_for([current_user, @device]) do |f| %>
 
       <%= f.label :name %>
       <%= f.text_field :name %>
@@ -12,5 +12,7 @@
       <%= f.text_field :color %>
       <br>
       <br>
+      <%= f.label 'Add to User'%>
+      <%= f.check_box 'user_id'%>
       <%= f.submit "Confirm" %>
 <% end %>

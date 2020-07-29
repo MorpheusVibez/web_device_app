@@ -17,11 +17,15 @@ class ApplicationController < ActionController::Base
   end 
       
   def require_logged_in 
-    if !logged_in
+    if !logged_in?
       redirect_to login_path
     end 
   end
   
+  def logout
+    session.clear
+    redirect_to '/'
+  end
 end
       #show them the new page unless they're logged in 
 

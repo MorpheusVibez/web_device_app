@@ -16,8 +16,12 @@
 
 <%= link_to 'All Devices', devices_path %>
 <br>
-<br>    
-<%# <%= link_to 'Edit', edit_user_devices_path(@device) %> %>
+<br> 
+<% if @device.user_id.present? %>   
+    <%= link_to 'Edit', edit_user_device_path(current_user) %>
+    <% else %>
+    <%= link_to 'Edit', edit_device_path(@device) %>
+    <% end %>
 <br>
 <br>
 <%= link_to 'Log Out', logout_path, method: :post %>
