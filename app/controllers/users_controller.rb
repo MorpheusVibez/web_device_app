@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-
+    before_action :require_logged_in, only: [:show, :edit, :update]
     def index
         all_users
     end
     
     def new
        new_user
-       build_device
+       
     end
 
     def create
@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     end
 
     def show
+        # binding.pry
         find_user
     end
 

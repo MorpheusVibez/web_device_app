@@ -4,12 +4,12 @@
     <ul> <%= current_user.name %> </ul>
     <ul> <%= current_user.location %> </ul>
     <ul> <%  current_user.devices.each do |device| %>
-<%# <%= binding.pry%> %>
-        <%= link_to device.name, user_device_path(current_user, device) %>
-        <% end %></ul>
+         <%= link_to device.name, user_device_path(current_user, device) %>
+         <% end %>
+    </ul>
     <br>
 
-<%= link_to 'Add Device', new_device_path %>
+<%= link_to 'Add Device', new_user_device_path(current_user) %>
 <br>
 <br>
 <%= link_to 'All Devices', devices_path %>

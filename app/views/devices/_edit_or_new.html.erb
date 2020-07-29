@@ -1,10 +1,10 @@
-<%= form_for([current_user, @device]) do |f| %>
+<%= form_for(@device) do |f| %>
 
       <%= f.label :name %>
       <%= f.text_field :name %>
       <br>
       <br>
-      <%= f.label "Storage Space "%>
+      <%= f.label "Storage Space" %>
       <%= f.number_field :storage_size_in_GB %> GB
       <br>
       <br>
@@ -12,7 +12,13 @@
       <%= f.text_field :color %>
       <br>
       <br>
-      <%= f.label 'Add to User'%>
-      <%= f.check_box 'user_id'%>
+      <%= binding.pry %>
+      <%# <% if current_user.devices %> %>
+            <%# <%= f.submit "Confirm" %> %>
+      <%# <% else %> %>
+            <%= display_name(@device, @path) %>
+            <%= user_select(@device, @path) %>
       <%= f.submit "Confirm" %>
+      <%# <% end %> %>
+      
 <% end %>

@@ -1,5 +1,5 @@
 class DevicesController < ApplicationController
-before_action :require_logged_in, only: [:new, :create, :edit, :update]
+before_action :require_logged_in
     def new
         new_device
     end
@@ -19,37 +19,56 @@ before_action :require_logged_in, only: [:new, :create, :edit, :update]
     end
 
     def show
+        # binding.pry
+        if params[:user_id]
+            @user = User.find_by(id: params[:user_id])
+            @device = @user.devices.find_by(id: params[:id])
+            if @device.nil?
+                redirect_to user_devices_path(current_user)
+            end
+        else
         find_device
+        end
     end
 
     def edit
-        find_device
+        # binding.pry
+        if params[:user_id]
+            user = User.find_by(id: params[:user_id])
+            if user.nil?
+                redirect_to users_path, alert: "User not found"
+            else
+                @device = user.devices.find_by(id: params[:id])
+                redirect_to user_devices_path(user), alert: "Device not found" if @device.nil?
+            end
+        else
+            find_device
+        end
     end
 
     def update
         find_device
-        if @device.update_attributes(device_params)
-            if @device.user_id == nil
-                @device.user_id = current_user.id
-                @device.save
-                redirect_to(@device)
-            # else render :edit
-            end
-          # Handle a successful update.
-          redirect_to(@device)
+        # binding.pry
+        @device.update(device_params)
+
+        if @device.save
+            redirect_to @device
         else
-          render :edit
+            render :edit
         end
     end
 
     def destroy
-
+        find_device
+        @device.destroy
+        flash[:notice] = "device deleted."
+        redirect_to devices_path
     end
 
     private
 
         def device_params
-            params.require(:device).permit(:name, :storage_size_in_GB, :color)
+            params.require(:device).permit(:name, :storage_size_in_GB, :color, :app_id, :user_id)
         end
 
         def all_devices
