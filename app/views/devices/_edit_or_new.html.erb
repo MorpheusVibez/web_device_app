@@ -12,13 +12,9 @@
       <%= f.text_field :color %>
       <br>
       <br>
-      <%= binding.pry %>
-      <%# <% if current_user.devices %> %>
-            <%# <%= f.submit "Confirm" %> %>
-      <%# <% else %> %>
             <%= display_name(@device, @path) %>
             <%= user_select(@device, @path) %>
       <%= f.submit "Confirm" %>
-      <%# <% end %> %>
+    
       
 <% end %>

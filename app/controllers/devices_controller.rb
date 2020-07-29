@@ -33,13 +33,13 @@ before_action :require_logged_in
 
     def edit
         # binding.pry
-        if params[:user_id]
+        if params[:user_id] == current_user.id.to_s
             user = User.find_by(id: params[:user_id])
             if user.nil?
                 redirect_to users_path, alert: "User not found"
             else
                 @device = user.devices.find_by(id: params[:id])
-                redirect_to user_devices_path(user), alert: "Device not found" if @device.nil?
+                redirect_to user_devices_path(current_user.id), alert: "Device not found" if @device.nil?
             end
         else
             find_device
@@ -48,13 +48,16 @@ before_action :require_logged_in
 
     def update
         find_device
-        # binding.pry
+        
+        if params[:device][:user_id] == current_user.id.to_s
         @device.update(device_params)
-
         if @device.save
             redirect_to @device
-        else
-            render :edit
+            
+        end
+        else 
+            binding.pry
+            redirect_to edit_user_device_path(current_user)#, flash: "Not Your Device"
         end
     end
 
