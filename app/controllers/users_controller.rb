@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     
     def new
        new_user
-       build_devices
+       build_device
     end
 
     def create
