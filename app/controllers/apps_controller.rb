@@ -13,7 +13,7 @@ class AppsController < ApplicationController
     end
 
     def show
-
+        @app = App.find_by(id: params[:id])
     end
 
     def edit
@@ -27,7 +27,7 @@ class AppsController < ApplicationController
     private
 
     def app_params
-        params.require(:app).permit(:name, :description, :category, :storage_size)
+        params.require(:app).permit(:name, :description, :category, :storage_size, :device_id)
     end
     
 end

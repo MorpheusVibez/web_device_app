@@ -5,15 +5,16 @@
 <h2> Info: </h2>
     
     <ul> <h3> Name: <%= @app.name %> </h3> </ul>
-    <ul> <h3> Storage Size: <%= @app.storage_size_in_GB %>GB </h3> </ul>
-    <ul> <h3> Color: <%= @app.color %> </h3> </ul> 
+    <ul> <h3> Description: <%= @app.description %> </h3> </ul>
+    <ul> <h3> Storage Size: <%= @app.storage_size_in_MB %>MB </h3> </ul>
+    <ul> <h3> Category: <%= @app.category %> </h3> </ul> 
            
-    <ul> <% if @app.device_id == nil %>
-        <%= link_to "Device Profile", user_path(@app.user_id)  %>
-        <% else %>
-        <h2> Not Your Device </h2>
-        <% end  %>
-    </ul>
+    <%# <ul> <% if @app.device_id == nil %> %>
+        <%# <%= link_to "App Profile", user_path(@app.user_id)  %> %>
+        <%# <% else %> %>
+        <%# <h2> Not Your Device </h2> %>
+        <%# <% end  %> %>
+    <%# </ul> %>
 
 <%= link_to 'All Apps', apps_path %>
 <br>
@@ -27,4 +28,4 @@
 <br>
 <br>
 <%= link_to 'Log Out', logout_path, method: :post %>
-<%= link_to 'User Profile', user_path(current_user) %>
+<%# <%= link_to 'User Profile', user_path(current_user) %> %>
