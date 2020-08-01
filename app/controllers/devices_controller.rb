@@ -71,7 +71,7 @@ before_action :require_logged_in
     private
 
         def device_params
-            params.require(:device).permit(:name, :storage_size_in_GB, :color, :app_id, :user_id)
+            params.require(:device).permit(:name, :storage_size_in_GB, :color, :app_id, :user_id, :app_id)
         end
 
         def all_devices
