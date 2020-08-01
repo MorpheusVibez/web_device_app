@@ -1,5 +1,5 @@
 class AppsController < ApplicationController
-    
+    before_action :require_logged_in
     def new
         new_app
     end
@@ -20,7 +20,7 @@ class AppsController < ApplicationController
     def show
         if params[:user_id]
             @user = User.find_by(id: params[:user_id])
-            @app = @ user.apps.find_by(id: params[:id])
+            @app = @user.apps.find_by(id: params[:id])
             if @app.nil?
                 redirect_to user_apps_path(current_user)
             end
@@ -77,7 +77,7 @@ class AppsController < ApplicationController
     end
 
     def find_app
-        @app = app.find(params[:id])
+        @app = App.find(params[:id])
     end    
     
 end
