@@ -19,7 +19,7 @@ before_action :require_logged_in
     end
 
     def show
-        # binding.pry
+        binding.pry
         if params[:user_id]
             @user = User.find_by(id: params[:user_id])
             @device = @user.devices.find_by(id: params[:id])

@@ -3,3 +3,5 @@
 <% @devices.each do |device| %>
    <h3> <%= link_to device.name, device_path(device) %> </h3>
 <% end %>
+
+<%= link_to 'User Profile', user_path(current_user) %>

@@ -18,6 +18,9 @@
 <%= link_to 'All Devices', devices_path %>
 <br>
 <br> 
+<%= link_to 'Add App to Device', new_user_app_path(current_user) %>
+<br>
+<br> 
 <% if @device.user_id == current_user.id %>   
     <%= link_to 'Edit', edit_user_device_path(current_user) %>
     <br>

@@ -20,4 +20,22 @@ module UsersHelper
           device.user.name
         end
       end
+
+      def display_user_device(app)
+        app.devices.nil? ? link_to("Add App", edit_app_path(app)) : link_to(app.devices, app_path(app.devices))
+      end
+    
+      def user_select_device(app, path)
+        if app.devices && path == "nested"
+          hidden_field_tag "app[device_id]", app.device_id
+        else
+          select_tag "app[device_id]", options_from_collection_for_select(Device.all, :id, :name), include_blank: true
+        end
+      end
+    
+      def display_name_device(app, path)
+        if app.devices && path == "nested"
+          app.devices.name
+        end
+      end
 end

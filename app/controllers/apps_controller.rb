@@ -6,6 +6,7 @@ class AppsController < ApplicationController
 
     def create
         @app = App.new(app_params)
+                # raise params.inspect
         if @app.save
             redirect_to app_path(@app)
         else
@@ -18,27 +19,38 @@ class AppsController < ApplicationController
     end
 
     def show
-        if params[:user_id]
-            @user = User.find_by(id: params[:user_id])
-            @app = @user.apps.find_by(id: params[:id])
-            if @app.nil?
-                redirect_to user_apps_path(current_user)
-            end
-        else
+        binding.pry
+        # if params[:user_id]
+            # @user = User.find_by(id: params[:user_id])
+            # @app = @user.apps.find_by(id: params[:id])
+            # @device = Device.find_by(app_id: @app.id)
+            # if @app.nil?
+                # redirect_to user_apps_path(current_user)
+            # end
+        # else
             find_app
-        end       
+            # @device = Device.find(find_app.device_id)
+        # end       
     end
 
     def edit
+        # binding.pry
         if params[:user_id] == current_user.id.to_s
             user = User.find_by(id: params[:user_id])
+            device = Device.find_by(user_id: params[:user_id])
             if user.nil?
                 redirect_to users_path
             else
-                @app = user.apps.find_by(id: params[:id])
-                redirect_to user_apps_path(current_user.id)
+                binding.pry
+                @app = device.app_id
+                if @app.nil?
+                    redirect_to new_user_app_path(user.id)
+                else
+                redirect_to edit_user_app_path(current_user.id)
+                end
             end
         else
+            binding.pry
             find_app
         end
     end
@@ -52,6 +64,7 @@ class AppsController < ApplicationController
                 redirect_to @app
             end
         else
+            binding.pry
             redirect_to edit_user_app_path(current_user)
         end
     end
@@ -65,7 +78,7 @@ class AppsController < ApplicationController
     private
 
     def app_params
-        params.require(:app).permit(:name, :description, :category, :storage_size, :device_id)
+        params.require(:app).permit(:name, :description, :category, :storage_size_in_MB, :device_id, devices_attributes: [:app_id])
     end
 
     def all_apps

@@ -3,29 +3,27 @@
 <h1> <%= @app.name %></h1>
 
 <h2> Info: </h2>
-    
+    <%= binding.pry %>
     <ul> <h3> Name: <%= @app.name %> </h3> </ul>
     <ul> <h3> Description: <%= @app.description %> </h3> </ul>
     <ul> <h3> Storage Size: <%= @app.storage_size_in_MB %>MB </h3> </ul>
     <ul> <h3> Category: <%= @app.category %> </h3> </ul> 
-           
-    <%# <ul> <% if @app.device_id == nil %> %>
-        <%# <%= link_to "App Profile", user_path(@app.user_id)  %> %>
-        <%# <% else %> %>
-        <%# <h2> Not Your Device </h2> %>
-        <%# <% end  %> %>
-    <%# </ul> %>
-
+    <ul> <h3> Device: <%= @app.devices.name %> </h3> </ul> 
+<br>
+<br> 
+<%= link_to 'User Profile', user_path(current_user) %>
+<br>
+<br> 
 <%= link_to 'All Apps', apps_path %>
 <br>
 <br> 
-<%# <% if @app.user_id == current_user.id %>    %>
-    <%# <%= link_to 'Edit', edit_user_app_path(current_user) %> %>
-    <%# <br> %>
-    <%# <br> %>
-    <%# <%= link_to 'Delete', user_app_path(current_user), method: :delete %> %>
-    <%# <% end %> %>
+<% if current_user.devices.ids.include?(@app.device_id) %>
+    <%= link_to 'Edit', edit_user_app_path(current_user) %>
+    <br>
+    <br>
+    <%= link_to 'Delete', user_app_path(current_user), method: :delete %>
+    <% end %>
 <br>
 <br>
 <%= link_to 'Log Out', logout_path, method: :post %>
-<%# <%= link_to 'User Profile', user_path(current_user) %> %>
+
