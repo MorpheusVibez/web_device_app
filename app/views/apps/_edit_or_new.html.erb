@@ -1,0 +1,20 @@
+<%= form_for(@app) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <br>
+      <br>
+      <%= f.label "Storage Space" %>
+      <%= f.number_field :storage_size_in_GB %> GB
+      <br>
+      <br>
+      <%= f.label :color %>
+      <%= f.text_field :color %>
+      <br>
+      <br>
+            <%= display_name(@app, @path) %>
+            <%= user_select(@app, @path) %>
+      <%= f.submit "Confirm" %>
+    
+      
+<% end %>
