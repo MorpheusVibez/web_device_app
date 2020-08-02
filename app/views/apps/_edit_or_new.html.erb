@@ -16,9 +16,9 @@
       <%= f.number_field :storage_size_in_MB %> MB
       <br>
       <br>
-            <%= display_name_device(@app, @path) %>
+            <%# <%= display_name_device(@app, @path) %> %>
             <%= user_select_device(@app, @path) %>
-            <%= binding.pry %>
+            
       <%= f.submit "Confirm" %>
     
       

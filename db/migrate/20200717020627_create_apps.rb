@@ -5,7 +5,7 @@ class CreateApps < ActiveRecord::Migration[6.0]
       t.string :description
       t.string :category
       t.string :storage_size_in_MB
-      t.integer :device_id
+      
 
       t.timestamps
     end

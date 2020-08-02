@@ -6,7 +6,9 @@ class AppsController < ApplicationController
 
     def create
         @app = App.new(app_params)
-                # raise params.inspect
+                raise params.inspect
+                # binding.pry
+                # add_to_device
         if @app.save
             redirect_to app_path(@app)
         else
@@ -78,7 +80,7 @@ class AppsController < ApplicationController
     private
 
     def app_params
-        params.require(:app).permit(:name, :description, :category, :storage_size_in_MB, :device_id, devices_attributes: [:app_id])
+        params.require(:app).permit(:name, :description, :category, :storage_size_in_MB, devices_attributes: [:id])
     end
 
     def all_apps
@@ -91,6 +93,15 @@ class AppsController < ApplicationController
 
     def find_app
         @app = App.find(params[:id])
-    end    
+    end  
+    
+    def add_to_device
+        binding.pry
+        current_user.devices.each do |d|
+            d.app_id == @app.id
+        end
+    end
+
+
     
 end

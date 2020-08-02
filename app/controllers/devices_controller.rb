@@ -19,7 +19,7 @@ before_action :require_logged_in
     end
 
     def show
-        binding.pry
+        # binding.pry
         if params[:user_id]
             @user = User.find_by(id: params[:user_id])
             @device = @user.devices.find_by(id: params[:id])
@@ -71,7 +71,7 @@ before_action :require_logged_in
     private
 
         def device_params
-            params.require(:device).permit(:name, :storage_size_in_GB, :color, :app_id, :user_id, :app_id)
+            params.require(:device).permit(:name, :storage_size_in_GB, :color, :app_id, :user_id)
         end
 
         def all_devices

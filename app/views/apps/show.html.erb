@@ -17,7 +17,7 @@
 <%= link_to 'All Apps', apps_path %>
 <br>
 <br> 
-<% if current_user.devices.ids.include?(@app.device_id) %>
+<% if current_user.devices.ids.include?(@app.devices.ids) %>
     <%= link_to 'Edit', edit_user_app_path(current_user) %>
     <br>
     <br>

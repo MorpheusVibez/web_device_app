@@ -8,6 +8,7 @@ class App < ApplicationRecord
     validates :storage_size_in_MB, presence: :true
 
     accepts_nested_attributes_for :devices
+    
 
     def self.social_media
         # Correct scope method

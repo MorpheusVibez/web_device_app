@@ -7,6 +7,7 @@
     <ul> <h3> Name: <%= @device.name %> </h3> </ul>
     <ul> <h3> Storage Size: <%= @device.storage_size_in_GB %>GB </h3> </ul>
     <ul> <h3> Color: <%= @device.color %> </h3> </ul> 
+    <ul> <h3> App Installed: <%= @device.app.name %> </h3> </ul> 
            
     <ul> <% if @device.user_id == current_user.id %>
         <%= link_to "User Profile", user_path(@device.user_id)  %>
@@ -30,4 +31,3 @@
 <br>
 <br>
 <%= link_to 'Log Out', logout_path, method: :post %>
-<%= link_to 'User Profile', user_path(current_user) %>

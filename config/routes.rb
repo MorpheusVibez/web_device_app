@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     resources :apps
   end
 
-  resources :devices
+  resources :devices do
+    resources :apps
+  end
 
   resources :apps
 
